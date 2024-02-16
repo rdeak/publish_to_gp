@@ -1,0 +1,17 @@
+{
+  "steps": [
+    {
+      "description": "Create a repository or navigate to existing repository"
+    },
+    {
+      "description": "Go to settings of the repository and enable github pages (don't forget to click save)",
+      "image": "settings.png"
+    },
+    {
+      "description": "Push `docs` directory with web page content into `main` branch"
+    },
+    {
+      "description": "Navigate to `https://{username}.github.io/{repository}`"
+    }
+  ]
+}

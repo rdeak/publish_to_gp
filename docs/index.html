@@ -9,6 +9,7 @@
             flex-flow: column nowrap;
             gap: 2rem;
         }
+
         img {
             max-width: 100%;
             height: auto;
@@ -23,11 +24,29 @@
 </head>
 <body>
 <h1>Steps how to publish to Github pages</h1>
-  <ol>
-      <li>Create a repository or navigate to existing repository</li>
-      <li>Go to settings of the repository and enable github pages (don't forget to click save) <img src="settings.png" alt="Settings printscreen" />  </li>
-      <li>Push `docs` directory with web page content into `main` branch</li>
-      <li>Navigate to `https://{username}.github.io/{repository}`</li>
-  </ol>
+<script type="module">
+    try {
+        const response = await fetch("steps.json");
+        const jsonResponse = await response.json();
+
+        const olElement = document.createElement("ol");
+        jsonResponse.steps.forEach(({description, image}, stepIndex) => {
+            const liElement = document.createElement("li");
+            liElement.innerText = description;
+
+            if (image) {
+                const imgElement = document.createElement("img");
+                imgElement.src = image;
+                imgElement.alt = `Image from from step ${stepIndex + 1}`
+                liElement.appendChild(imgElement);
+            }
+
+            olElement.appendChild(liElement)
+        })
+        document.body.appendChild(olElement)
+    } catch (e) {
+        console.error(e);
+    }
+</script>
 </body>
 </html>
